@@ -1,18 +1,19 @@
 package handler
 
 import (
-	"eddy.com/todo/entity"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
 	"strconv"
 
+	"eddy.com/todo/entity"
+
 	"eddy.com/todo/service"
 )
 
 func Health(responseWriter http.ResponseWriter, request *http.Request) {
-	fmt.Fprint(responseWriter, "Server OK")
+	fmt.Fprint(responseWriter, "Server OK 1.0")
 }
 
 func Insert(responseWriter http.ResponseWriter, request *http.Request) {
@@ -59,7 +60,6 @@ func Update(responseWriter http.ResponseWriter, request *http.Request) {
 		http.Error(responseWriter, "Error parsing request body", http.StatusInternalServerError)
 	}
 
-
 	err = service.Update(todo)
 	if err != nil {
 		http.Error(responseWriter, "Error updating todo", http.StatusInternalServerError)
@@ -76,7 +76,7 @@ func Delete(responseWriter http.ResponseWriter, request *http.Request) {
 	}
 
 	err = service.Delete(todoID)
-	if err != nil{
+	if err != nil {
 		http.Error(responseWriter, "Error deleting todo", http.StatusInternalServerError)
 	}
 }
@@ -91,7 +91,7 @@ func SetFinished(responseWriter http.ResponseWriter, request *http.Request) {
 	}
 
 	err = service.SetToFinished(todoID)
-	if err != nil{
+	if err != nil {
 		http.Error(responseWriter, "Error setting todo to finish", http.StatusInternalServerError)
 	}
 }
