@@ -2,13 +2,14 @@ package data
 
 import (
 	"database/sql"
-	"eddy.com/todo/entity"
-	_ "github.com/lib/pq"
 	"log"
 	"os"
+
+	"eddy.com/todo/entity"
+	_ "github.com/lib/pq"
 )
 
-func getConection() (*sql.DB, error){
+func getConection() (*sql.DB, error) {
 	return sql.Open("postgres", os.Getenv("DATABASE_URL"))
 }
 
@@ -103,7 +104,7 @@ func Update(todo entity.Todo) error {
 		todo.Description,
 		todo.Finished,
 		todo.Id,
-		)
+	)
 	if err != nil {
 		log.Fatal(err.Error())
 		return err
