@@ -5,6 +5,15 @@ on:
     branches: [main]
 
 jobs:
+  build:
+    name: Building Go app
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Go
+        uses: actions/setup-go@v2
+      - name: Building
+        run: go build ./...
   deploy:
     name: Deploy to Heroku
     runs-on: ubuntu-latest
