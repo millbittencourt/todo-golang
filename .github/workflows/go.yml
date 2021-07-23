@@ -16,6 +16,7 @@ jobs:
         run: go build ./...
   deploy:
     name: Deploy to Heroku
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
